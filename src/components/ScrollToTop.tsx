@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -10,7 +9,9 @@ const ScrollToTop = () => {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            setIsVisible(window.scrollY > 300); // Affiche le bouton après 300px de scroll
+            if (typeof window !== "undefined") { 
+                setIsVisible(window.scrollY > 300); // Affiche le bouton après 300px de scroll
+            }
         };
 
         window.addEventListener("scroll", toggleVisibility);

@@ -2,7 +2,7 @@
   "personalInfo": {
     "name": "Level sony M.",
     "title": "Étudiant en Ingénierie Informatique, spécialisé en Cybersécurité and DevSecOps",
-    "email": "osony-dilane-level.mbango@isen.yncrea.fr",
+    "email": "sony-dilane-level.mbango@isen.yncrea.fr",
     "phone": "",
     "location": "Toulon, France",
     "github": "https://github.com/sony-level",
@@ -110,16 +110,16 @@
     "Software Architecture",
     "Problem Solving and Logical Thinking"
   ],
-  "certifications": [
+ "certifications": [
     {
       "name": "Fortinet Certified Associate in Cybersecurity",
       "date": "Avril 2024",
-      "description": "Focus: HTML, CSS, JavaScript"
+      "description": "Certification démontrant une compréhension approfondie des principes de la cybersécurité et des compétences pratiques pour protéger les réseaux et les systèmes."
     },
     {
       "name": "Fortinet Certified Fundamentals in Cybersecurity",
       "date": "Avril 2024",
-      "description": "Focus: HTML, CSS, JavaScript"
+      "description": "Certification couvrant les concepts de base de la cybersécurité, y compris les menaces, les vulnérabilités et les meilleures pratiques pour sécuriser les environnements informatiques."
     }
   ],
   "softSkills": [

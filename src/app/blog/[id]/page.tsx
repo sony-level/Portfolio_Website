@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         </div>
       </div>
       <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">About the Author</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">À propos de l'auteur</h3>
         <div className="flex items-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <Image
             src={heroImage}
@@ -116,7 +116,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           <div>
             <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{postData.author}</h4>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Etudiant en informatique, passionné par le DevSecOps et . J'aime partager mes connaissances et mes expériences à travers des articles et des tutoriels.
+              Étudiant en informatique, passionné par le DevSecOps et la cybersécurité 🛡️💻. J'aime partager mes connaissances et mes expériences à travers des articles et des tutoriels 📚✍️.
             </p>
           </div>
         </div>
