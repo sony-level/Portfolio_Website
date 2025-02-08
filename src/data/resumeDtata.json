@@ -1,0 +1,134 @@
+{
+  "personalInfo": {
+    "name": "Level sony M.",
+    "title": "Étudiant en Ingénierie Informatique, spécialisé en Cybersécurité and DevSecOps",
+    "email": "osony-dilane-level.mbango@isen.yncrea.fr",
+    "phone": "",
+    "location": "Toulon, France",
+    "github": "https://github.com/sony-level",
+    "linkedin": "https://www.linkedin.com/in//",
+    "website": "https://level-sony.fr",
+    "summary": "Étudiant en 4ème année d’école d’ingénieur, je recherche un stage de 4 mois dès juin 2025 avec possibilité d'alternance en octobre 2025. Motivé et polyvalent, je souhaite mettre en œuvre mes compétences en sécurisation des systèmes, en développement d’applications sécurisées et en documentation pour la conformité",
+    "image": "https://avatars.githubusercontent.com/u/40724828?v=4"
+  },
+  "experience": [
+    {
+      "company": "AFEV",
+      "position": "Mentor Éducatif Bénévole",
+      "startDate": "Octobre 2024",
+      "endDate": "Présent",
+      "description": "Engagement solidaire pour réduire les inégalités sociales et éducatives. Accompagnement des jeunes et familles dans leur parcours éducatif.",
+      "location": "Toulon, France",
+      "companyUrl": "https://www.afev.org/"
+    },
+    {
+      "company": "Hackvens 2023",
+      "position": "Participant CTF & Bug Bounty",
+      "startDate": "2023",
+      "endDate": "2023",
+      "description": "Participation à des défis Capture The Flag (CTF) et programmes de Bug Bounty. Sécurisation des systèmes industriels, configurations Kubernetes, IoT security et travail en équipe.",
+      "location": "Lyon - France",
+      "companyUrl": "https://hackvens.fr/2023/"
+    },
+    {
+      "company": "GLOBAL SPES",
+      "position": "Stagiaire Informatique",
+      "startDate": "Juin 2021",
+      "endDate": "Septembre 2021",
+      "description": "Support technique et résolution de problèmes liés aux logiciels, réseaux et systèmes informatiques. Diagnostic et réparation des incidents techniques. Assistance et conseils aux utilisateurs pour une meilleure utilisation des technologies.",
+      "companyUrl": ""
+    }
+
+  ],
+  "education": [
+    {
+      "institution": "ISEN YNCREA Toulon",
+      "degree": "BAC +4 Informatique, spécialisation Cybersécurité",
+      "startDate": "2022",
+      "endDate": "Aujourd’hui",
+      "description": "Formation en ingénierie informatique avec une spécialisation en cybersécurité et DevSecOps.",
+      "institutionUrl": "https://isen-mediterranee.fr/"
+    },
+    {
+      "institution": "ESIAC",
+      "degree": "Classe Préparatoire MP (Maths - Physique)",
+      "startDate": "2020",
+      "endDate": "2022",
+      "description": "Intensive training in mathematics, physics, and computer science.",
+      "institutionUrl": "https://www.esiac.net/"
+    }
+  ],
+  "skills": [
+    "Sécurité & Analyse",
+    "DevSecOps",
+    "React.js",
+    "Angular",
+    "Rust",
+    "C",
+    "Java",
+    "Python",
+    "Bash/Shell",
+    "Docker",
+    "Kubernetes",
+    "Docker Compose",
+    "GitHub Actions",
+    "CI/CD",
+    "VS Code",
+    "OpenAI"
+  ],
+  "languages": [
+    {
+      "language": "Français",
+      "proficiency": "Native"
+    },
+    {
+      "language": "English",
+      "proficiency": "B1"
+    }
+
+  ],
+  "projects": [
+    {
+      "name": "Docker Host Manager",
+      "description": "Développement d'une interface graphique pour gérer les conteneurs Docker locaux sans ligne de commande et consulter les journaux.",
+      "technologies": ["React.js", "Node.js", "Docker", "Docker Compose"],
+      "link": ""
+    },
+    {
+      "name": "BrowserMania",
+      "description": "Automatisation du déploiement et de la gestion de multiples instances de navigateurs web isolés dans des conteneurs Kubernetes avec une fonctionnalité de streaming en temps réel via WebRTC.",
+      "technologies": ["Rust", "API REST", "WebSocket", "Kubernetes", "WebRTC"],
+      "link": ""
+    }
+
+  ],
+  "interests": [
+    "Open Source Contributions",
+    "Cybersecurity",
+    "DevSecOps",
+    "AI and Machine Learning",
+    "Software Architecture",
+    "Problem Solving and Logical Thinking"
+  ],
+  "certifications": [
+    {
+      "name": "Fortinet Certified Associate in Cybersecurity",
+      "date": "Avril 2024",
+      "description": "Focus: HTML, CSS, JavaScript"
+    },
+    {
+      "name": "Fortinet Certified Fundamentals in Cybersecurity",
+      "date": "Avril 2024",
+      "description": "Focus: HTML, CSS, JavaScript"
+    }
+  ],
+  "softSkills": [
+    "Travail d'équipe",
+    "Esprit d’analyse",
+    "Curiosité",
+    "Autonomie",
+    "Polyvalence",
+    "Autodidacte",
+    "Motivation"
+  ]
+}
