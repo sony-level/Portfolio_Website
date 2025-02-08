@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run start && next build",
+    "build": "npm run dev  && next build",
     "generate": "npx ts-node ./scripts/generate.ts",
     "start": "next start",
     "lint": "next lint"
