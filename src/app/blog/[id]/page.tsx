@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         </div>
       </div>
       <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">À propos de l'auteur</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">À propos de l&apos;auteur</h3>
         <div className="flex items-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <Image
             src={heroImage}
