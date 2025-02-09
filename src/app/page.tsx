@@ -10,8 +10,10 @@ import Languages from '@/components/Languages';
 import Hobbies from '@/components/Hobbies';
 import ContactForm from "@/components/ContactForm";
 import ScrollToTop from "@/components/ScrollToTop";
-import InteractiveTerminal from '@/components/terminal';
+import dynamic from 'next/dynamic';
+//import InteractiveTerminal from '@/components/terminal';
 
+const InteractiveTerminal = dynamic(() => import('@/components/terminal'), { ssr: false });
 
 const HomePage: React.FC = () => {
 
