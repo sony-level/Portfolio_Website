@@ -16,11 +16,48 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
     messages,
     input,
     handleInputChange,
-    handleSubmit,
+    handleSubmit: originalHandleSubmit,
     setMessages,
     isLoading,
     error,
-  } = useChat();
+  } = useChat({
+    api: '/api/chat',
+    onResponse: (response) => {
+      if (!response.ok) {
+        console.error('Response error:', response.statusText);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    },
+    onFinish: (message) => {
+      console.log('Chat finished successfully');
+    },
+    onError: (error) => {
+      console.error("Chat error:", error);
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: `An error occurred: ${error?.message || 'Something went wrong. Please try refreshing the page if this persists.'}`,
+      };
+      setMessages([...messages, errorMessage]);
+    }
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    
+    try {
+      await originalHandleSubmit(e);
+    } catch (err: any) {
+      console.error("Failed to send message:", err);
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: `Failed to send message: ${err?.message || 'Please try again.'}`,
+      };
+      setMessages([...messages, errorMessage]);
+    }
+  };
 
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,20 +98,16 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <ChatMessage message={message} key={message.id} />
           ))}
           {isLoading && lastMessageIsUser && (
-            <ChatMessage
-              message={{
-                id: "Chargement",
-                role: "Assistant",
-                content: "🤖 Pense...",
-              }}
-            />
+            <div className="flex items-center gap-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-purple-500"></div>
+            </div>
           )}
           {error && (
             <ChatMessage
               message={{
                 id: "error",
-                role: "Assistant",
-                content: "Quelque chose s'est mal passé.Veuillez réessayer!",
+                role: "assistant",
+                content: error?.message || "Something went wrong. Please try again!",
               }}
             />
           )}
@@ -82,10 +115,10 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <div className="flex flex-col items-center justify-center h-full text-center">
             <Bot size={48} className="text-purple-500 mb-4 animate-bounce" />
             <p className="text-lg font-medium mb-2">
-                Bonjour! Comment puis-je vous aider aujourd'hui?
+              Hello! How can I assist you today?
             </p>
             <p className="text-sm ">
-                N'hésitez pas à me demander quoi que ce soit sur ce site Web.
+              Feel free to ask me anything about this website.
             </p>
           </div>
           )}
@@ -94,7 +127,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           <button
             type="button"
             className="flex w-10 flex-none items-center justify-center hover:text-red-500 transition-colors duration-300"
-            title="Effacer le Chat"
+            title="Clear chat"
             onClick={() => setMessages([])}
           >
             <Trash size={24} />
@@ -102,7 +135,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="Dites quelque chose..."
+            placeholder="Say something..."
             className="flex-grow rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
             ref={inputRef}
           />
@@ -110,7 +143,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             type="submit"
             className="flex w-10 flex-none items-center justify-center disabled:opacity-50 hover:text-blue-400 transition-colors duration-300"
             disabled={input.length === 0}
-            title="Envoi message"
+            title="Submit message"
           >
             <SendHorizontal size={24} />
           </button>
@@ -126,7 +159,7 @@ interface ChatMessageProps {
 }
 
 function ChatMessage({ message: { role, content } }: ChatMessageProps) {
-  const isAiMessage = role === "Assistant";
+  const isAiMessage = role === "assistant";
 
   return (
     <div
