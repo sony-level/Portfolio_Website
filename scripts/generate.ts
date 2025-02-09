@@ -80,4 +80,4 @@ async function generateEmbeddings() {
   }
 }
 
-generateEmbeddings().catch(console.error);
+generateEmbeddings().catch(console.error); 
