@@ -10,10 +10,7 @@ import Languages from '@/components/Languages';
 import Hobbies from '@/components/Hobbies';
 import ContactForm from "@/components/ContactForm";
 import ScrollToTop from "@/components/ScrollToTop";
-import dynamic from 'next/dynamic';
-//import InteractiveTerminal from '@/components/terminal';
 
-const InteractiveTerminal = dynamic(() => import('@/components/terminal'), { ssr: false });
 
 const HomePage: React.FC = () => {
 
@@ -61,9 +58,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <div className="sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-6">
-        <InteractiveTerminal />
-      </div>
+    
 
       {/* <div className="sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-6 grid grid-cols-1 lg:grid-cols-2 gap-4 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col">
