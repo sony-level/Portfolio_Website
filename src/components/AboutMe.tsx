@@ -39,7 +39,7 @@ const AboutMe: React.FC = () => {
               <a href="https://linkedin.com/in/level-sony/" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="https://blog.level-sony" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
+              <a href="https://blog.level-sony.fr" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
                 <FaBlog  className="w-6 h-6" />
               </a>
               <a href="https://gitlab.com/sonydilane" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
