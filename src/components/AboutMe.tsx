@@ -20,7 +20,7 @@ const AboutMe: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Level sony M.</h1>
             <p className="text-blue-600 dark:text-blue-400 mb-4">@sony-level</p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-              Je suis Level Sony, étudiant en ingénierie informatique spécialisé en cybersécurité. Avec un souci du détail et une soif d'apprentissage, je suis toujours à la recherche de nouvelles façons de rendre mon code plus propre (oui, j&apos;ai mes moments de perfectionniste). Passionné par le développement et la cybersécurité, mon objectif est d’apprendre constamment, de perfectionner mes compétences et de développer des solutions robustes et sécurisées.
+              Je suis Level Sony, étudiant en ingénierie informatique spécialisé en cybersécurité. Avec un souci du détail et une soif d&apos;apprentissage, je suis toujours à la recherche de nouvelles façons de rendre mon code plus propre (oui, j&apos;ai mes moments de perfectionniste). Passionné par le développement et la cybersécurité, mon objectif est d’apprendre constamment, de perfectionner mes compétences et de développer des solutions robustes et sécurisées.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                Et au passage, l&apos;IA commence à me fasciner autant que la cybersécurité – entre botnet et algorithmes, c’est un univers de possibilités sans fin ! .

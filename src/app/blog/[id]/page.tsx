@@ -116,7 +116,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           <div>
             <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{postData.author}</h4>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Étudiant en informatique, passionné par le DevSecOps et la cybersécurité 🛡️💻. J'aime partager mes connaissances et mes expériences à travers des articles et des tutoriels 📚✍️.
+              Étudiant en informatique, passionné par le DevSecOps et la cybersécurité 🛡️💻. J&apos;aime partager mes connaissances et mes expériences à travers des articles et des tutoriels 📚✍️.
             </p>
           </div>
         </div>
@@ -125,4 +125,4 @@ export default async function BlogPost({ params }: BlogPostProps) {
   );
 }
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
