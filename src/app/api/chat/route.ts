@@ -13,8 +13,6 @@ import {
   StreamingTextResponse,
   Message as VercelChatMessage,
 } from "ai";
-import { UpstashRedisCache } from "@langchain/community/caches/upstash_redis";
-import { Redis } from "@upstash/redis";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createHistoryAwareRetriever } from "langchain/chains/history_aware_retriever";
 import { createRetrievalChain } from "langchain/chains/retrieval";
@@ -34,28 +32,21 @@ export async function POST(req: Request) {
 
     const currentMessageContent = messages[messages.length - 1].content;
 
-    const cache = new UpstashRedisCache({
-      client: Redis.fromEnv(),
-    });
-
     const { stream, handlers } = LangChainStream();
 
-    const chatModel = new ChatOpenAI({
+    const retrievalModel = new ChatOpenAI({
+      modelName: "gpt-4-1106-preview",
+      streaming: false,
+    });
+
+    const streamingModel = new ChatOpenAI({
       modelName: "gpt-4-1106-preview",
       streaming: true,
       callbacks: [handlers],
-      verbose: true,
-      cache,
-    });
-
-    const rephrasingModel = new ChatOpenAI({
-      modelName: "gpt-4-1106-preview",
-      verbose: true,
-      cache,
     });
 
     const retriever = (await getVectorStore()).asRetriever({
-      k: 5 // Increased number of documents to retrieve
+      k: 5
     });
 
     const rephrasePrompt = ChatPromptTemplate.fromMessages([
@@ -63,14 +54,14 @@ export async function POST(req: Request) {
       ["user", "{input}"],
       [
         "user",
-        "Given the above conversation, generate a search query to look up information relevant to the current question. " +
-        "Focus on keywords related to skills, experiences, projects, or specific details about the portfolio owner. " +
-        "Only return the query and no other text.",
+        "Étant donné la conversation ci-dessus, générez une requête de recherche pour trouver des informations pertinentes à la question actuelle. " +
+        "Concentrez-vous sur les mots-clés liés aux compétences, aux expériences, aux projets ou aux détails spécifiques concernant le propriétaire du portfolio. " +
+        "Ne retournez que la requête et aucun autre texte.",
       ],
     ]);
 
     const historyAwareRetrieverChain = await createHistoryAwareRetriever({
-      llm: rephrasingModel,
+      llm: retrievalModel,
       retriever,
       rephrasePrompt,
     });
@@ -78,15 +69,22 @@ export async function POST(req: Request) {
     const prompt = ChatPromptTemplate.fromMessages([
       [
         "system",
-        `You are a chatbot for a personal portfolio website. You should answer as if you are the owner of the portfolio.
-        Use the following context to answer questions about the portfolio owner's skills, experiences, projects, and other relevant information.
-        Always strive to provide accurate, specific, and comprehensive information based on the context provided.
-        When discussing experiences or skills, ensure you cover all relevant details from the context.
-        If asked about skills or experiences, refer to the most up-to-date information in the context.
-        Whenever it makes sense, provide links to pages that contain more information about the topic from the given context.
-        When providing links, use the standard Markdown format: [link text](URL)
-        Do not generate or suggest any HTML or React components.
-        Format your messages in markdown format.
+        `Vous êtes un chatbot me représentant sur mon site web de portfolio personnel. Vos réponses doivent être :
+        1. Personnelles - Parlez toujours à la première personne ("je", "mon", "moi")
+        2. Détaillées mais concises - Fournissez des informations significatives sans être accablantes
+        3. Basées strictement sur le contexte fourni
+        4. Engagées et professionnelles
+
+        Règles :
+        - Répondez toujours comme si vous étiez moi, le propriétaire du portfolio
+        - Lorsque l'information n'est pas dans le contexte, suggérez des sections pertinentes du portfolio :
+          - Pour les projets : "Vous pouvez explorer plus de mes projets sur la page [Projets](/projects)"
+          - Pour les compétences : "Consultez mon [GitHub](https://github.com/sony-level) pour un aperçu de mes compétences techniques"
+          - Pour l'expérience : "Visitez mon [LinkedIn](https://www.linkedin.com/in/level-sony/) pour mon historique professionnel complet"
+        - Incluez 2-3 détails pertinents lorsque vous discutez de compétences ou d'expériences
+        - Utilisez des liens markdown pour référencer les sections du portfolio ou les profils externes
+        - Gardez les réponses informatives mais conversationnelles
+
         
         Context:
         {context}`,
@@ -96,7 +94,7 @@ export async function POST(req: Request) {
     ]);
 
     const combineDocsChain = await createStuffDocumentsChain({
-      llm: chatModel,
+      llm: streamingModel,
       prompt,
       documentPrompt: PromptTemplate.fromTemplate(
         "{page_content}",
@@ -109,21 +107,42 @@ export async function POST(req: Request) {
       retriever: historyAwareRetrieverChain,
     });
 
-    const result = await retrievalChain.invoke({
+    const resultPromise = retrievalChain.invoke({
       input: currentMessageContent,
       chat_history: chatHistory,
     });
 
-    const sanitizedResponse = sanitizeResponse(result.answer);
+    const response = new StreamingTextResponse(stream);
 
-    return new StreamingTextResponse(stream);
-  } catch (error) {
-    console.error(error);
-    return Response.json({ error: "Internal server error" }, { status: 500 });
+    resultPromise.then((result) => {
+      if (!result.answer) {
+        handlers.handleLLMError(new Error("No response generated"), "no_response");
+        return;
+      }
+    }).catch((error) => {
+      handlers.handleLLMError(error, "chain_error");
+    });
+
+    return response;
+  } catch (error: any) {
+    console.error("Chat API error:", error);
+    
+    const errorMessage = error?.message || "Unknown error occurred";
+    return Response.json(
+      { 
+        error: "Chat processing failed", 
+        details: errorMessage,
+        code: error?.code || "UNKNOWN_ERROR"
+      }, 
+      { status: 500 }
+    );
   }
 }
 
 function sanitizeResponse(response: string): string {
-  // Remove any HTML-like tags
-  return response.replace(/<\/?[^>]+(>|$)/g, "");
+  if (!response) return "";
+  
+  return response
+    .replace(/<\/?[^>]+(>|$)/g, "")
+    .trim();
 }
