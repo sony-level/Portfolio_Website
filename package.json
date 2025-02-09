@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run dev  && next build",
+    "build": "npm run generate  && next build",
     "generate": "npx ts-node ./scripts/generate.ts",
     "start": "next start",
     "lint": "next lint"
@@ -28,7 +28,7 @@
     "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
-    "langchain": "^0.1.11",
+    "langchain": "^0.1.37",
     "lucide-react": "^0.320.0",
     "next": "14.1.0",
     "next-themes": "^0.2.1",
