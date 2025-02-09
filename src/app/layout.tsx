@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +31,7 @@ export default function RootLayout({
           <main className="p-4 pb-12 max-w-7xl mx-auto overflow-hidden lg:overflow-visible">
             {children}
           </main>
-
+          <SpeedInsights/>
           <Footer />
         </ThemeProvider>
       </body>
