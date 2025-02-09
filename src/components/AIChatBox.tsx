@@ -115,10 +115,10 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <div className="flex flex-col items-center justify-center h-full text-center">
             <Bot size={48} className="text-purple-500 mb-4 animate-bounce" />
             <p className="text-lg font-medium mb-2">
-              Hello! How can I assist you today?
+            Bonjour ! Comment puis-je vous aider aujourd'hui ?
             </p>
             <p className="text-sm ">
-              Feel free to ask me anything about this website.
+            N&apos;hésitez pas à me poser des questions sur ce site web.
             </p>
           </div>
           )}

@@ -26,7 +26,7 @@ const AboutMe: React.FC = () => {
                Et au passage, l&apos;IA commence à me fasciner autant que la cybersécurité – entre botnet et algorithmes, c’est un univers de possibilités sans fin ! .
             </p>
             <div className="flex justify-center sm:justify-start space-x-4">
-              <a href="mailto:sony-dilane-level.mbango@isen.yncrea.fr" className="text-blue-400 hover:text-blue-500 transition-colors duration-300">
+              <a href="mailto:crsony@proton.me" className="text-blue-400 hover:text-blue-500 transition-colors duration-300">
                 <MdMarkEmailUnread className="w-6 h-6" />
               </a>
 
