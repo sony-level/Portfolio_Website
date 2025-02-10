@@ -8,4 +8,19 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly" 
+      interval: "daily" # Check for updates every day
+      time: "00:00"
+    open-pull-requests-limit: 10
+    allow:
+    - dependency-type: "all"
+    commit-message:
+      prefix: "chore(deps): update"
+      includes: ["dependencies", "devDependencies", "peerDependencies"]
+    labels:
+      - "dependencies"
+    reviewers:
+      - "sony-level"
+    ignore:
+      -dependencie-name: "*"
+      update-types: ["version-update:semver-major"]
+    versioning-strategy: "insecure-if-necessary"
