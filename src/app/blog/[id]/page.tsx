@@ -96,10 +96,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
         <h2 className="text-2xl font-bold mb-4">Related Posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {relatedPosts.map((post) => (
-            <div key={post.id} className="border p-4 rounded">
-              <h3 className="font-semibold">{post.title}</h3>
-              <p className="text-sm text-gray-600">{post.date}</p>
-            </div>
+            <Link key={post.id} href={`/blog/${post.id}`} className="border p-4 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+            <h3 className="font-semibold">{post.title}</h3>
+            <p className="text-sm text-gray-600">{post.date}</p>
+          </Link>
           ))}
         </div>
       </div>

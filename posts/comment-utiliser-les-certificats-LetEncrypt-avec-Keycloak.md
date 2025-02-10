@@ -7,7 +7,14 @@ category: "DevSecOps"
 description: "Ce guide explique comment configurer un certificat SSL Let's Encrypt avec Keycloak pour activer HTTPS, afin de sécuriser l'accès à votre serveur."
 ---
 
+> Keycloak est un outil open-source de gestion des identités et des accès, développé par Red Hat. Il offre des fonctionnalités telles que l'authentification unique (SSO), la gestion des utilisateurs et des rôles, ainsi que le support de protocoles standardisés comme OpenID Connect, OAuth 2.0 et SAML.[Redhat](https://developers.redhat.com)
 
+> Une anecdote intéressante concernant Keycloak est son adoption par Red Hat pour gérer l'authentification et l'autorisation de ses propres systèmes. Red Hat utilise Keycloak comme base pour son produit Red Hat SSO, démontrant ainsi la confiance de l'entreprise dans cet outil pour sécuriser ses applications internes.
+
+
+> Cette intégration interne souligne la fiabilité et la robustesse de Keycloak en tant que solution de gestion des identités et des accès.
+
+---
 
 # Introduction
 
@@ -19,7 +26,9 @@ Ce guide suppose que vous avez déjà installé Keycloak à `/opt/keycloak/` en 
 
 Dans toutes les instructions ci-dessous, assurez-vous de remplacer `<DOMAIN>` avec le domaine réel que vous utiliserez. Toutes les commandes de ce guide doivent être exécutées en tant que super-utilisateur.
 
+![Carto](/images/function_keyclook.png)
 
+---
 
 ## 1. Installer Certbot
 

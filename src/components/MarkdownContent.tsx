@@ -4,6 +4,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { Components } from 'react-markdown';
+import Image from 'next/image';
+
 
 interface MarkdownContentProps {
   content: string;
@@ -39,6 +41,16 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => {
     a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
     blockquote: ({ node, ...props }) => (
       <blockquote className="border-l-4 border-gray-300 pl-4 italic my-2" {...props} />
+    ),
+    img: ({ node, ...props }) => (
+      <Image
+        {...props}
+        src={props.src || ''}
+        alt={props.alt || ''}
+        width={800}
+        height={400}
+        className="rounded-lg mb-8 object-cover w-full"
+      />
     ),
   };
 
