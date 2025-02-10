@@ -12,15 +12,17 @@ updates:
       time: "00:00"
     open-pull-requests-limit: 10
     allow:
-    - dependency-type: "all"
+      - dependency-type: "all" # Met à jour toutes les dépendances
     commit-message:
-      prefix: "chore(deps): update"
-      includes: ["dependencies", "devDependencies", "peerDependencies"]
+      prefix: "chore(deps):"
     labels:
       - "dependencies"
     reviewers:
+      - "sony-level" # Remplace par ton pseudo GitHub si nécessaire
+    assignees:
       - "sony-level"
+
+    # Ignore uniquement les mises à jour majeures
     ignore:
-      -dependencie-name: "*"
-      update-types: ["version-update:semver-major"]
-    versioning-strategy: "insecure-if-necessary"
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
