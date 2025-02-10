@@ -12,6 +12,7 @@ description: "Ce guide présente des pratiques DevSecOps pour sécuriser la cha�
 
 ## Comparaison entre DevSecOps et DevOps
 
+
 | **Aspect**                         | **DevSecOps**                                                                                                                      | **DevOps**                                                       |
 |------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | **Tests de sécurité automatisés**  | Mise en place de tests de non‑régression, analyses statique et dynamique, et vérification de conformité de l’IaC.                    | Focus sur les tests fonctionnels et de performance, sans vérifications approfondies de sécurité. |
@@ -22,6 +23,7 @@ description: "Ce guide présente des pratiques DevSecOps pour sécuriser la cha�
 | **Confidentialité et vigilance**   | Vigilance accrue quant à la confidentialité, avec gestion stricte des accès et surveillance des données sensibles.                   | Moins d’accent mis sur la confidentialité spécifique au sein de la chaîne CI/CD.              |
 | **Règles de développement sécurisé** | Imposition de règles et standards de codage sécurisés auprès des équipes de développement.                                          | Priorisation de l’agilité et de la rapidité de livraison, avec des standards de sécurité parfois moins stricts. |
 | **Durcissement des systèmes**     | Application de règles de durcissement sur les OS hébergeant les applications (cf. [Guide Linux](https://cyber.gouv.fr/guide-linux)). | Accent mis sur la flexibilité et la performance, avec un durcissement moins poussé.           |
+
 
 ## Sécurité dans la CI/CD
 
