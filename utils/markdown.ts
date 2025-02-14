@@ -4,6 +4,25 @@ import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 
+import { unified } from 'unified';
+import markdown from 'remark-parse';
+import remarkToc from 'remark-toc';
+
+
+
+interface TableOfContentsProps {
+  toc: { url: string; value: string }[];
+}
+
+export async function getTableOfContents(markdownContent: string) {
+  const file = await unified()
+    .use(markdown)
+    .use(remarkToc, { heading: 'contributing' })
+    .parse(markdownContent);
+
+  return file.children.filter(node => node.type === 'heading');
+}
+
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export interface PostData {
