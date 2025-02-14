@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Level Sony",
     default: "Level Sony",
   },
-  description: "Check out my smart portfolio website with a custom AI chatbot.",
+  description: "Découvrez mon site de portfolio intelligent avec un chatbot IA personnalisé.",
 };
 
 export default function RootLayout({
