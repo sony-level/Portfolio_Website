@@ -48,6 +48,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const relatedPosts = await getRelatedPosts(params.id, postData.category);
 
   return (
+    
     <article className="max-w-3xl mx-auto px-4 py-16">
       <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-200">
         <ArrowLeft size={20} className="mr-2" />
