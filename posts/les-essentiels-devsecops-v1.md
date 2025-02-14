@@ -1,5 +1,5 @@
 ---
-title: "Les essentials en DevSecOps"
+title: "Les essentiels en DevSecOps"
 date: "2025-02-01"
 author: "Level Sony"
 tags: ["Sécurité", "DevSecOps"]
@@ -22,7 +22,6 @@ L’histoire du développement logiciel est jalonnée d’innovations majeures. 
 Cependant, cette accélération est rapidement apparue insuffisante face à la multiplication des cybermenaces. La sécurité, trop souvent ajoutée en fin de processus, exposait les applications à des vulnérabilités. **DevSecOps** est ainsi apparu comme la solution idéale : intégrer dès le départ des contrôles de sécurité (comme les tests de *non‑régression*[^1]) pour garantir un produit fiable et sécurisé.
 
 ---
-
 
 
 ![Comparaisons](/images/compareison.png)
