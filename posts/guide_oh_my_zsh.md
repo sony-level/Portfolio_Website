@@ -4,12 +4,10 @@ date: "2024-12-13"
 author: "Level Sony"
 tags: ["Linux", "Shell", "Bash", "Sécurité"]
 category: "Linux"
-description: ""
+description: "un framework open-source qui améliore et personnalise votre shell Zsh. Ce guide vous montre comment configurer Oh My Zsh sur Linux pour optimiser votre expérience en ligne de commande "
 ---
 
 > Nous allons donc voir comment améliorer les fonctionnalités du terminal et lui donner un look beaucoup plus convivial. Le but de cet article tout comme le reste est personnel pour moi car je me retrouve souvent à oublier certaines pratiques, d'où l'idée de noter et conserver mes apprentissages.
----
-
 ---
 
 
