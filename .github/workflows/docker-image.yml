@@ -10,10 +10,8 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    runs-on: self-hosted
+   
 
     steps:
     - name: Checkout the repository
