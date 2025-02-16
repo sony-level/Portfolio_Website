@@ -25,6 +25,20 @@ jobs:
         registry: ghrc.io
         username: ${{ secrets.GHCR_USERNAME }}
         password: ${{ secrets.GHCR_TOKEN }}
+        
+    - name: Set up env
+      run: |
+        echo "NEXT_PUBLIC_GITHUB_TOKEN=${{ secrets.NEXT_PUBLIC_GITHUB_TOKEN }}" >> .env.local
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env.local
+        echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env.local
+        echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env.local
+        echo "UPSTASH_REDIS_REST_URL=${{ secrets.UPSTASH_REDIS_REST_URL }}" >> .env.local
+        echo "UPSTASH_REDIS_REST_TOKEN=${{ secrets.UPSTASH_REDIS_REST_TOKEN }}" >> .env.local
+        echo "NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}" >> .env.local
+        echo "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}" >> .env.local
+        echo "NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}" >> .env.local
+
+
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
@@ -42,4 +56,14 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        build-args: |
+          NEXT_PUBLIC_GITHUB_TOKEN=${{ secrets.NEXT_PUBLIC_GITHUB_TOKEN }}
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+          UPSTASH_REDIS_REST_URL=${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN=${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
         
