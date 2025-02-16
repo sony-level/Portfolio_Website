@@ -22,9 +22,5 @@ updates:
     assignees:
       - "sony-level"
 
-    # Ignore uniquement les mises à jour majeures
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-        versions: ["*"]
+    
         
