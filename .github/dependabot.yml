@@ -25,4 +25,4 @@ updates:
     # Ignore uniquement les mises à jour majeures
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+        update-types: ["version-update:semver-major"] 
