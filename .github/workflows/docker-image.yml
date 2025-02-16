@@ -19,8 +19,11 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
 
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v3
 
     - name: Log out from any existing Docker session
       run: docker logout ghcr.io || true
@@ -55,13 +58,15 @@ jobs:
           type=sha,prefix=,suffix=,format=short
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       with:
         context: .
         file: ./Dockerfile
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        secrets: |
+            GHCR_TOKEN=${{ secrets.GHCR_TOKEN }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         build-args: |
