@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import heroImage from "@/assets/pic.jpg";
+import heroImage from "@/assets/pi.png";
 import { Twitter, GithubIcon, Linkedin, Link } from "lucide-react";
 import {FaBlog, FaGitlab} from "react-icons/fa";
 import {SiGravatar, SiRootme} from "react-icons/si";
