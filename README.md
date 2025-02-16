@@ -175,7 +175,7 @@ This project is set up for easy deployment on Vercel:
 3. Add all environment variables in your Vercel project settings
 4. Deploy!
 
-## Updating Content
+## Updating Content 
 
 To update the chatbot's knowledge:
 
