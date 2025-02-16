@@ -6,8 +6,8 @@ type Repo = RestEndpointMethodTypes["repos"]["listForUser"]["response"]["data"][
 
 export async function GET() {
   try {
-    const username = process.env.GHRC_USERNAME;
-    console.log('GitHub Username:', username);
+    const username = process.env.GHCR_USERNAME;
+    
     
     if (!username) {
       console.error('GitHub username not found in environment variables');
