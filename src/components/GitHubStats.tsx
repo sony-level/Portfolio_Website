@@ -90,12 +90,23 @@ const GitHubStats: React.FC = () => {
     { label: 'Stars', value: totalStars },
     { label: 'Followers', value: userData?.followers || 0 },
     { label: 'Following', value: userData?.following || 0 },
-    { label: 'Forks', value: userData?.public_gists || 0 },
+  
 
   ];
 
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex-grow">
+      <div className="flex items-center mb-6">
+        <img
+          src={userData?.avatar_url}
+          alt={`Avatar of ${userData?.login}`}
+          className="w-16 h-16 rounded-full mr-4"
+        />
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{userData?.name || userData?.login}</h2>
+          <p className="text-gray-600 dark:text-gray-400">{userData?.bio}</p>
+        </div>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {stats.map((stat, index) => (
           <div key={index} className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md shadow text-center">
